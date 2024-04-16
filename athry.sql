@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2024 at 02:45 AM
+-- Generation Time: Apr 16, 2024 at 11:16 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,13 @@ CREATE TABLE `admins` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`) VALUES
+(1, 'admin', 'admin@admin.com', '$2y$10$Cv/pPdo8aYAO/TA8nB/QMe/D1H.uHLnV2aThnx4OdDLogxlJR.MHq');
 
 -- --------------------------------------------------------
 
@@ -62,6 +69,14 @@ CREATE TABLE `cities` (
   `city_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`city_id`, `city_name`) VALUES
+(2, 'البتانون'),
+(3, 'البتانون');
+
 -- --------------------------------------------------------
 
 --
@@ -75,7 +90,7 @@ CREATE TABLE `clients` (
   `password` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `active` bit(2) NOT NULL
+  `active` tinyint(1) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -83,7 +98,7 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`client_id`, `name`, `mail`, `password`, `phone`, `image`, `active`) VALUES
-(5, '23qwesd', 'mohamedgammal55@gmail.com', '$2y$10$Cv/pPdo8aYAO/TA8nB/QMe/D1H.uHLnV2aThnx4OdDLogxlJR.MHq', '123456', '', b'00');
+(5, '23qwesd', 'mohamedgammal55@gmail.com', '$2y$10$Cv/pPdo8aYAO/TA8nB/QMe/D1H.uHLnV2aThnx4OdDLogxlJR.MHq', '123456', '', 0);
 
 -- --------------------------------------------------------
 
@@ -98,15 +113,8 @@ CREATE TABLE `guides` (
   `password` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `active` bit(2) NOT NULL
+  `active` tinyint(1) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `guides`
---
-
-INSERT INTO `guides` (`guide_id`, `name`, `mail`, `password`, `phone`, `image`, `active`) VALUES
-(2, 'admin@admin.com', 'mohamedgammal55@gmail.com', '$2y$10$T/9IfiFyyqrJP1UVF4QSwO7ONxKEbiKaJbxuhz62zqjRmOCvKUHq6', '212345', '', b'00');
 
 -- --------------------------------------------------------
 
@@ -176,6 +184,12 @@ CREATE TABLE `tours` (
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `bookings`
 --
 ALTER TABLE `bookings`
@@ -238,6 +252,12 @@ ALTER TABLE `tours`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
@@ -247,7 +267,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `city_id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `city_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -259,7 +279,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `guides`
 --
 ALTER TABLE `guides`
-  MODIFY `guide_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `guide_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `landmarks`

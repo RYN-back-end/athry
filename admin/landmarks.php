@@ -1,24 +1,9 @@
 <?php
 require('../system/helper.php');
 checkAdminLogin();
-$selectGuidesSql = 'SELECT * FROM guides order by guide_id DESC';
-$selectGuidesResult = runQuery($selectGuidesSql);
+$selectLandMarksSql = 'SELECT * FROM landmarks order by landmark_id DESC';
+$selectLandMarksResult = runQuery($selectLandMarksSql);
 
-if (isset($_GET['method'])){
-    if ($_GET['method']=='delete' && isset($_GET['id'])){
-        $deleteSql = "DELETE FROM `guides` WHERE `guide_id` = {$_GET['id']}";
-        runQuery($deleteSql);
-        header('Location: guides.php');
-        die();
-    }
-
-    if ($_GET['method']=='active' && isset($_GET['id']) && isset($_GET['active'])){
-        $deleteSql = "UPDATE `guides` SET `active` = {$_GET['active']} WHERE `guide_id` = {$_GET['id']}";
-        runQuery($deleteSql);
-        header('Location: guides.php');
-        die();
-    }
-}
 
 ?>
 <!doctype html>
@@ -31,10 +16,10 @@ if (isset($_GET['method'])){
     <!-- Meta -->
     <meta name="description" content="Responsive Bootstrap4 Dashboard Template">
     <meta name="author" content="ParkerThemes">
-    <link rel="shortcut icon" href="../assets/images/logo-ZIv9wrFv_Z1PmHf8.webp"/>
+    <link rel="shortCut icon" href="../assets/images/logo-ZIv9wrFv_Z1PmHf8.webp"/>
 
     <!-- Title -->
-    <title>اثري | المرشدين</title>
+    <title>اثري | المعالم السياحية</title>
     <?php
     include 'layout/assets/css.php';
     ?>
@@ -75,7 +60,7 @@ include 'layout/inc/header.php';
         <div class="page-header">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">الرئيسية</li>
-                <li class="breadcrumb-item active">المرشدين</li>
+                <li class="breadcrumb-item active">المعالم السياحية</li>
             </ol>
 
             <ul class="app-actions">
@@ -103,20 +88,20 @@ include 'layout/inc/header.php';
                                     <tr>
                                         <th>#</th>
                                         <th>الاسم</th>
-                                        <th>البريد الإلكتروني</th>
-                                        <th>رقم الهاتف</th>
-                                        <th>الصورة</th>
+                                        <th>الموقع الإلكتروني</th>
+                                        <th>الملف</th>
+                                        <th>الوصف</th>
                                         <th>الحالة</th>
                                         <th>حذف</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php if ($selectGuidesResult->num_rows > 0) {
-                                        while ($row = $selectGuidesResult->fetch_assoc()) {
+                                    <?php if ($selectClientsResult->num_rows > 0) {
+                                        while ($row = $selectClientsResult->fetCh_assoc()) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $row['guide_id'] ?></td>
+                                                <td><?php echo $row['client_id'] ?></td>
                                                 <td><?php echo $row['name'] ?></td>
                                                 <td><?php echo $row['mail'] ?></td>
                                                 <td><?php echo $row['phone'] ?></td>
@@ -127,9 +112,9 @@ include 'layout/inc/header.php';
                                                     <?php
                                                     if ($row['active'] == 2) {
                                                         ?>
-                                                        <a href="?method=active&id=<?php echo $row['guide_id'] ?>&active=1"
+                                                        <a href="?method=active&id=<?php echo $row['client_id'] ?>&active=1"
                                                            class="btn btn-info">قبول</a>
-                                                        <a href="?method=active&id=<?php echo $row['guide_id'] ?>&active=0"
+                                                        <a href="?method=active&id=<?php echo $row['client_id'] ?>&active=0"
                                                            class="btn btn-warning">رفض</a>
 
                                                         <?php
@@ -149,7 +134,7 @@ include 'layout/inc/header.php';
                                                     ?>
                                                 </td>
                                                 <td>
-                                                    <a href="?method=delete&id=<?php echo $row['guide_id'] ?>"
+                                                    <a href="?method=delete&id=<?php echo $row['client_id'] ?>"
                                                        class="btn btn-danger">حذف</a>
                                                 </td>
                                             </tr>

@@ -20,6 +20,21 @@
                     <i class="icon-verified_user nav-icon"></i>
                     المرشدين
                 </a>
+            </li>  <li class="nav-item dropdown">
+                <a class="nav-link " href="clients.php" >
+                    <i class="icon-user-check nav-icon"></i>
+                    العملاء
+                </a>
+            </li> <li class="nav-item dropdown">
+                <a class="nav-link " href="clients.php" >
+                    <i class="icon-user-check nav-icon"></i>
+                    المعالم
+                </a>
+            </li><li class="nav-item dropdown">
+                <a class="nav-link " href="cities.php" >
+                    <i class="icon-location_city nav-icon"></i>
+                    المدن
+                </a>
             </li>
         </ul>
     </div>
