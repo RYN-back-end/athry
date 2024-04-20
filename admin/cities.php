@@ -12,7 +12,7 @@ if ( isset($_POST['method'])) {
         header('Location: cities.php');
         die();
     } if ($_POST['method'] == 'edit' && isset($_POST['city_name']) && isset($_POST['city_id'])) {
-        $sql = "UPDATE `cities` SET `city_name` = '{$_POST['city_name']}'";
+        $sql = "UPDATE `cities` SET `city_name` = '{$_POST['city_name']}' WHERE `city_id` = {$_GET['id']}";
         runQuery($sql);
         header('Location: cities.php');
         die();

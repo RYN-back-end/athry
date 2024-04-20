@@ -26,7 +26,7 @@
                     العملاء
                 </a>
             </li> <li class="nav-item dropdown">
-                <a class="nav-link " href="clients.php" >
+                <a class="nav-link " href="landmarks.php" >
                     <i class="icon-user-check nav-icon"></i>
                     المعالم
                 </a>

@@ -8,18 +8,7 @@ if (isset($_POST['type'])) {
             $sql = "SELECT * FROM `guides` WHERE `mail` =  '{$_POST['mail']}'";
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $insertSql = "INSERT INTO `guides`(`name`,`mail`,`phone`,`password`) VALUES ('{$_POST['name']}','{$_POST['mail']}','{$_POST['phone']}','$password')";
-            runQuery($insertSql);
-            $getLastIdSql = "SELECT * FROM `guides` order by guide_id  DESC";
-            $result = runQuery($getLastIdSql);
-            $row = $result->fetch_assoc();
-
-            $_SESSION['guide']['guide_id'] = $row['guide_id'];
-            $_SESSION['guide']['name'] = $row['name'];
-            $_SESSION['guide']['image'] = $row['image'];
-            $_SESSION['guide']['mail'] = $row['mail'];
-            $_SESSION['guide']['phone'] = $row['phone'];
-            $_SESSION['guide']['loggedin'] = true;
-            header('Location: index.php');
+            header('Location: AdminAuth.php');
             die();
         }
     } elseif ($_POST['type'] == 'login') {
@@ -73,7 +62,8 @@ include "layout/inc/header.php";
         <section class="slideAuth relative mx-auto">
             <div class="d-flex items-start overflow-hidden" id="container">
                 <div class="signIn Form" style="display: none;">
-                    <form action="" method="post"><h1 class="text-center fs-r-30 fw-800 mb-8 line-relaxed">تسجيل الدخول</h1>
+                    <form action="" method="post"><h1 class="text-center fs-r-30 fw-800 mb-8 line-relaxed">تسجيل
+                            الدخول</h1>
                         <input type="hidden" name="type" value="login">
 
                         <div class="formGroup relative mb-7"><input type="email" name="mail"
