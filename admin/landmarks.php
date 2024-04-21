@@ -180,7 +180,7 @@ include 'layout/inc/header.php';
                                                 
                                                <td><button class="btn btn-info"  data-toggle="modal" data-target="#editModal<?php echo $row['landmark_id'] ?>">تعديل</button></td>
                                                 <td>
-                                                    <a href="?method=delete&id=<?php echo $row['landmark_id'] ?>"
+                                                    <a href="?method=DELETE&id=<?php echo $row['landmark_id'] ?>"
                                                        class="btn btn-danger">حذف</a>
                                                 </td>
                                             </tr> 

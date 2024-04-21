@@ -24,7 +24,7 @@ if (isset($_POST['type'])) {
                     $_SESSION['guide']['mail'] = $row['mail'];
                     $_SESSION['guide']['phone'] = $row['phone'];
                     $_SESSION['guide']['loggedin'] = true;
-                    header('Location: index.php');
+                    header('Location: guide/index.php');
                 } else {
                     header('Location: AdminAuth.php?error=The Password Is Wrong');
                 }

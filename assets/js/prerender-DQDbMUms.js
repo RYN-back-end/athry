@@ -266,7 +266,7 @@ const HeaderData = [
   },
   {
     title: "المعالم السياحية",
-    path: "TouristView.html"
+    path: "TouristView.php"
   },
   {
     title: "الجولات السياحية",
@@ -676,7 +676,7 @@ const $$DetailsTouristView = createComponent(async ($$result, $$props, $$slots) 
 }, "D:/project/version/2/Astro/Asre/src/pages/detailsTouristView.astro", void 0);
 
 const $$file$5 = "D:/project/version/2/Astro/Asre/src/pages/detailsTouristView.astro";
-const $$url$5 = "/detailsTouristView.html";
+const $$url$5 = "/detailsTouristView.php";
 
 const detailsTouristView = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
@@ -691,7 +691,7 @@ const $$Details2 = createComponent(async ($$result, $$props, $$slots) => {
   Astro2.self = $$Details2;
   return renderTemplate`${maybeRenderHead()}<section class="detailsSection"> <div class="container"> <div class="row"> <!-- right-side --> <div class="col-5-lg col-12-md col-12-sm row-right"> <div class="right-side"> <div class="d-flex items-center mb-6"> <p class="title fs-18 fw-500">اسم المرشد:</p> <p class="des name fs-24 fw-700">احمد التطاوي</p> </div> <div class="d-flex items-center mb-6"> <p class="title fs-18 fw-500">بداية الجولة:</p> <p class="des fw-600 fs-20">14-3-2024</p> </div> <div class="d-flex items-center mb-6"> <p class="title fs-18 fw-500">نهاية الجولة:</p> <p class="des fw-600 fs-20">14-3-2024</p> </div> <div class="d-flex items-center mb-6"> <p class="title fs-18 fw-500">عدد الافراد:</p> <p class="des fw-600 fs-24">4</p> </div> <div class="d-flex items-center mb-6"> <p class="title fs-18 fw-500">التكلفة:</p> <p class="des price fs-24 fw-700">
 1800
-<span class="fs-16 fw-500">ر.س</span> </p> </div> <div class="mt-14"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "\u0627\u062D\u062C\u0632 \u0627\u0644\u0627\u0646", "ClassName": "btn-popup  round-6" }, { "default": ($$result2) => renderTemplate` <a href="cart.html" class="py-6 px-12 fs-18 fw-700"> احجز الان</a> ` })} </div> </div> </div> <!-- left-side --> <div class="col-7-lg col-12-md col-12-sm row-left"> <div class="left-side"> <div class="full-img-container round-6 relative d-flex items-center gap-y-5"> <div class=""> <a href="detailsTouristView.html"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </a> <a href="detailsTouristView.html"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6` })} </a> </div> <div> <a href="detailsTouristView.html"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </a> <a href="detailsTouristView.html"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6` })} </a> </div> </div> </div> </div> <!-- end row --> </div> </div> </section>`;
+<span class="fs-16 fw-500">ر.س</span> </p> </div> <div class="mt-14"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "\u0627\u062D\u062C\u0632 \u0627\u0644\u0627\u0646", "ClassName": "btn-popup  round-6" }, { "default": ($$result2) => renderTemplate` <a href="cart.html" class="py-6 px-12 fs-18 fw-700"> احجز الان</a> ` })} </div> </div> </div> <!-- left-side --> <div class="col-7-lg col-12-md col-12-sm row-left"> <div class="left-side"> <div class="full-img-container round-6 relative d-flex items-center gap-y-5"> <div class=""> <a href="detailsTouristView.php"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </a> <a href="detailsTouristView.php"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6` })} </a> </div> <div> <a href="detailsTouristView.php"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </a> <a href="detailsTouristView.php"> ${renderComponent($$result, "Image", $$Image, { "src": Img, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6` })} </a> </div> </div> </div> </div> <!-- end row --> </div> </div> </section>`;
 }, "D:/project/version/2/Astro/Asre/src/components/details/details2.astro", void 0);
 
 const $$Astro$g = createAstro();
@@ -749,7 +749,7 @@ const $$Row = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$c, $$props, $$slots);
   Astro2.self = $$Row;
   const { isBooking } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div class="row gap-row-1 gap-x-12"> ${CardData.map((card) => renderTemplate`<div class="col-4-lg col-6-md col-12-sm"> ${renderComponent($$result, "Card", $$Card, { "title": card.title, "img": card.img, "des": card.des, "place": card.place, "price": isBooking ? card.price : "", "btnText": isBooking ? "\u0627\u062D\u062C\u0632 \u0627\u0644\u0627\u0646" : "\u0639\u0631\u0636 \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644", "path": isBooking ? "detailsViewTours.html" : "detailsTouristView.html", "isBooking": isBooking })} </div>`)} </div>`;
+  return renderTemplate`${maybeRenderHead()}<div class="row gap-row-1 gap-x-12"> ${CardData.map((card) => renderTemplate`<div class="col-4-lg col-6-md col-12-sm"> ${renderComponent($$result, "Card", $$Card, { "title": card.title, "img": card.img, "des": card.des, "place": card.place, "price": isBooking ? card.price : "", "btnText": isBooking ? "\u0627\u062D\u062C\u0632 \u0627\u0644\u0627\u0646" : "\u0639\u0631\u0636 \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644", "path": isBooking ? "detailsViewTours.html" : "detailsTouristView.php", "isBooking": isBooking })} </div>`)} </div>`;
 }, "D:/project/version/2/Astro/Asre/src/components/ui/Row.astro", void 0);
 
 const $$Astro$b = createAstro();
@@ -767,7 +767,7 @@ const $$TouristView = createComponent(async ($$result, $$props, $$slots) => {
 }, "D:/project/version/2/Astro/Asre/src/pages/TouristView.astro", void 0);
 
 const $$file$2 = "D:/project/version/2/Astro/Asre/src/pages/TouristView.astro";
-const $$url$2 = "/TouristView.html";
+const $$url$2 = "/TouristView.php";
 
 const TouristView = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
