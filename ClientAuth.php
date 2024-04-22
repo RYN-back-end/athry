@@ -9,17 +9,7 @@ if (isset($_POST['type'])) {
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $insertSql = "INSERT INTO `clients`(`name`,`mail`,`phone`,`password`) VALUES ('{$_POST['name']}','{$_POST['mail']}','{$_POST['phone']}','$password')";
             runQuery($insertSql);
-            $getLastIdSql = "SELECT * FROM `clients` order by client_id DESC";
-            $result = runQuery($getLastIdSql);
-            $row = $result->fetch_assoc();
-
-            $_SESSION['user']['client_id'] = $row['client_id'];
-            $_SESSION['user']['name'] = $row['name'];
-            $_SESSION['user']['image'] = $row['image'];
-            $_SESSION['user']['mail'] = $row['mail'];
-            $_SESSION['user']['phone'] = $row['phone'];
-            $_SESSION['user']['loggedin'] = true;
-            header('Location: index.php');
+            header('Location: ClientAuth.php?success=تم التسجيل بإنتظار قبول مدير النظام');
             die();
         }
     } elseif ($_POST['type'] == 'login') {
@@ -34,7 +24,7 @@ if (isset($_POST['type'])) {
                         header('Location: ClientAuth.php?error=لقد تم رفض تسجيلك');
                         die();
                     } elseif ($row['active'] == 2) {
-                        header('Location: ClientAuth.php?error=تم التسجيل بإنتظار قبول مدير النظام');
+                        header('Location: ClientAuth.php?error=بإنتظار قبول مدير النظام');
                         die();
                     }
 
@@ -157,6 +147,7 @@ include "layout/inc/header.php";
 </main>
 <?php
 include "layout/inc/footer.php";
+include "layout/inc/toastr.php";
 ?>
 </body>
 </html>

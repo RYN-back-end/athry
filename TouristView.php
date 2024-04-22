@@ -87,7 +87,7 @@ include "layout/inc/header.php";
                                     </div>
                                     <!-- end -->
                                 </div>
-                        </a>
+                            </a>
                         </div>
 
                         <?php
@@ -101,6 +101,8 @@ include "layout/inc/header.php";
     </section>
 </main> <?php
 include "layout/inc/footer.php";
+include "layout/inc/toastr.php";
 ?>
+
 </body>
 </html>

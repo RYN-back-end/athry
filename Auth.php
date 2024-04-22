@@ -12,29 +12,9 @@
     <script type="module" src="./assets/js/hoisted-C_1GnFOu.js"></script>
 </head>
 <body>
-<header class="absolute top-0">
-    <div class="container">
-        <nav class="d-flex items-center justify-between py-2"><a href="index.php" class="logo"> <img
-                src="./assets/images/logo-ZIv9wrFv_Z1PmHf8.webp" alt="logo for Gift Genius " class="img-cover"
-                loading="eager" width="736" height="712" decoding="async"> </a>
-            <button class="btn icon-nav-base" type="button" aria-label="open menu">
-                <span></span><span></span><span></span></button>
-            <ul class="d-flex items-center link-list normalMenu">
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="index.php"> الرئيسية </a></li>
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="AboutUs.html"> من نحن </a></li>
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="TouristView.php"> المعالم
-                    السياحية </a></li>
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="ViewTours.php"> الجولات
-                    السياحية </a></li>
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="cart.html"> جدول الرحلات </a>
-                </li>
-            </ul>
-            <button class="btn btn-popup nav-button round-6" type="button" aria-label="Auth page"><a href="Auth.html"
-                                                                                                     class="py-6 px-14 fw-700 fs-18">انضم
-                الينا</a></button>
-        </nav>
-    </div>
-</header>
+<?php
+include "layout/inc/header.php";
+?>
 <main class="relative Main">
     <div class="imgContainer absolute"><img src="./assets/images/asre-cnAquRBy_ZfACzo.webp" alt="bg" class="img-cover"
                                             loading="eager" width="1200" height="800" decoding="async"></div>
@@ -60,7 +40,7 @@
                             </symbol>
                             <use xlink:href="#ai:local:admin"></use>
                         </svg>
-                        <p class="fw-500 fs-18 pt-5">تسجيل كمشرف</p> <a href="AdminAuth.php" title="AdminAuth.html"
+                        <p class="fw-500 fs-18 pt-5">تسجيل كمشرف</p> <a href="AdminAuth.php" title="AdminAuth.php"
                                                                         class="absolute"></a></div>
                     <div class="Box relative text-center round-6">
                         <svg width="1em" height="1em" viewBox="0 0 36 36" data-icon="client">
@@ -75,45 +55,16 @@
                             </symbol>
                             <use xlink:href="#ai:local:client"></use>
                         </svg>
-                        <p class="fw-500 fs-18 pt-5">تسجيل كمستخدم</p> <a href="ClientAuth.php" title="ClientAuth.html"
+                        <p class="fw-500 fs-18 pt-5">تسجيل كمستخدم</p> <a href="ClientAuth.php" title="ClientAuth.php"
                                                                           class="absolute"></a></div>
                 </section>
             </div>
         </section>
     </div>
 </main>
-<footer>
-    <div class="container d-flex items-start justify-between">
-        <div class="footer-ul about-us"><p class="title fs-24 fw-700">من نحن</p>
-            <p class="dec line-relaxed fs-16">
-                نحن نقدم لك احدث العروض السياحية التي تناسب جميع الفئات بافضل
-                الاسعار
-            </p></div> <!--  -->
-        <div class="footer-ul contact-us"><p class="title fs-24 fw-700">تواصل معانا</p>
-            <p class="dec line-relaxed fs-16">
-                تطبيق الويب المثالي لاستكشاف العالم من حولك ومعرفة الماضي الخصاص بالحضارت المختلفة
-            </p></div> <!--  -->
-        <div class="footer-ul news"><p class="title fs-24 fw-700">اخر الاحداث</p>
-            <p class="dec line-relaxed fs-16">
-                يمكنك الوثوق بنا، فنحن نرسل العروض فقط، وليس بريدًا عشوائيًا واحدًا
-            </p>
-            <form action="/">
-                <div class="from-group relative mt-7"><input type="email" placeholder="البريد الالكتروني"
-                                                             class="round-4 pr-5">
-                    <button class="btn  btn-popup sendEmails round-4 px-9  top-0 left-0" type="submit"
-                            aria-label="send email">
-                        <svg width="1em" height="1em" viewBox="0 0 32 32" data-icon="arrow-left">
-                            <symbol id="ai:local:arrow-left">
-                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                      stroke-width="2" d="M10 6 2 16l8 10M2 16h28"/>
-                            </symbol>
-                            <use xlink:href="#ai:local:arrow-left"></use>
-                        </svg>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</footer>
+<?php
+include "layout/inc/footer.php";
+include "layout/inc/toastr.php";
+?>
 </body>
 </html>

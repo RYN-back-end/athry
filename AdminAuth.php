@@ -10,7 +10,7 @@ if (isset($_POST['type'])) {
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $insertSql = "INSERT INTO `guides`(`name`,`mail`,`phone`,`password`) VALUES ('{$_POST['name']}','{$_POST['mail']}','{$_POST['phone']}','$password')";
             runQuery($insertSql);
-            header('Location: AdminAuth.php');
+            header('Location: AdminAuth.php?success=تم التسجيل بإنتظار قبول مدير النظام');
             die();
         }
     } elseif ($_POST['type'] == 'login') {
@@ -24,7 +24,7 @@ if (isset($_POST['type'])) {
                         header('Location: AdminAuth.php?error=لقد تم رفض تسجيلك');
                         die();
                     } elseif ($row['active'] == 2) {
-                        header('Location: AdminAuth.php?error=تم التسجيل بإنتظار قبول مدير النظام');
+                        header('Location: AdminAuth.php?error= بإنتظار قبول مدير النظام');
                         die();
                     }
 
@@ -146,6 +146,7 @@ include "layout/inc/header.php";
 </main>
 <?php
 include "layout/inc/footer.php";
+include "layout/inc/toastr.php";
 ?>
 </body>
 </html>
