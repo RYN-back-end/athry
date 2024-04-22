@@ -29,6 +29,15 @@ if (isset($_POST['type'])) {
             if ($data->num_rows > 0) {
                 $row = $data->fetch_assoc();
                 if (password_verify($_POST['password'], $row['password'])) {
+
+                    if ($row['active'] == 0) {
+                        header('Location: ClientAuth.php?error=لقد تم رفض تسجيلك');
+                        die();
+                    } elseif ($row['active'] == 2) {
+                        header('Location: ClientAuth.php?error=تم التسجيل بإنتظار قبول مدير النظام');
+                        die();
+                    }
+
                     $_SESSION['user']['client_id'] = $row['client_id'];
                     $_SESSION['user']['name'] = $row['name'];
                     $_SESSION['user']['image'] = $row['image'];
@@ -39,6 +48,7 @@ if (isset($_POST['type'])) {
                 } else {
                     header('Location: ClientAuth.php?error=The Password Is Wrong');
                 }
+                die();
             } else {
                 header('Location: ClientAuth.php?error=The Email Is Invalid');
             }
@@ -46,6 +56,7 @@ if (isset($_POST['type'])) {
         }
     } else {
         header('Location: ClientAuth.php');
+        die();
     }
 }
 ?>

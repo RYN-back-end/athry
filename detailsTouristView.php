@@ -33,7 +33,7 @@ $rowlandmark = $selectlandmarksResult->fetch_assoc();
                 <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="AboutUs.html"> من نحن </a></li>
                 <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="TouristView.php"> المعالم
                         السياحية </a></li>
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="ViewTours.html"> الجولات
+                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="ViewTours.php"> الجولات
                         السياحية </a></li>
                 <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="cart.html"> جدول الرحلات </a>
                 </li>

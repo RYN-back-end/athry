@@ -11,11 +11,13 @@ if ( isset($_POST['method'])) {
         runQuery($sql);
         header('Location: cities.php');
         die();
-    } if ($_POST['method'] == 'edit' && isset($_POST['city_name']) && isset($_POST['city_id'])) {
-        $sql = "UPDATE `cities` SET `city_name` = '{$_POST['city_name']}' WHERE `city_id` = {$_GET['id']}";
-        runQuery($sql);
-        header('Location: cities.php');
-        die();
+    } if ($_POST['method'] == 'edit') {
+        if (isset($_POST['city_name']) && isset($_POST['city_id'])){
+            $sql = "UPDATE `cities` SET `city_name` = '{$_POST['city_name']}' WHERE `city_id` = {$_POST['city_id']}";
+            runQuery($sql);
+            header('Location: cities.php');
+            die();
+        }
     }
 }
 if (isset($_GET['method']) || isset($_POST['method'])) {
@@ -141,7 +143,7 @@ include 'layout/inc/header.php';
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form method="post" action="" id="CreateForm">
+                                                            <form method="post" action="" id="editForm<?php echo $row['city_id'] ?>">
                                                                 <input type="hidden" value="edit" name="method">
                                                                 <input type="hidden" value="<?php echo $row['city_id'] ?>" name="city_id">
                                                                 <div class="form-group">
@@ -153,7 +155,7 @@ include 'layout/inc/header.php';
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                                            <button type="submit" class="btn btn-primary" form="CreateForm">حفظ</button>
+                                                            <button type="submit" class="btn btn-primary" form="editForm<?php echo $row['city_id'] ?>">حفظ</button>
                                                         </div>
                                                     </div>
                                                 </div>

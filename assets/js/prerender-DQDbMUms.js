@@ -270,7 +270,7 @@ const HeaderData = [
   },
   {
     title: "الجولات السياحية",
-    path: "ViewTours.html"
+    path: "ViewTours.php"
   },
   {
     title: " جدول الرحلات ",
@@ -813,7 +813,7 @@ const $$ViewTours = createComponent(async ($$result, $$props, $$slots) => {
 }, "D:/project/version/2/Astro/Asre/src/pages/ViewTours.astro", void 0);
 
 const $$file$1 = "D:/project/version/2/Astro/Asre/src/pages/ViewTours.astro";
-const $$url$1 = "/ViewTours.html";
+const $$url$1 = "/ViewTours.php";
 
 const ViewTours = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

@@ -1,6 +1,7 @@
 <?php
 require('system/helper.php');
 checkGuideLogin();
+
 if (isset($_POST['type'])) {
     if ($_POST['type'] == 'register') {
 
@@ -8,6 +9,7 @@ if (isset($_POST['type'])) {
             $sql = "SELECT * FROM `guides` WHERE `mail` =  '{$_POST['mail']}'";
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $insertSql = "INSERT INTO `guides`(`name`,`mail`,`phone`,`password`) VALUES ('{$_POST['name']}','{$_POST['mail']}','{$_POST['phone']}','$password')";
+            runQuery($insertSql);
             header('Location: AdminAuth.php');
             die();
         }
@@ -18,6 +20,14 @@ if (isset($_POST['type'])) {
             if ($data->num_rows > 0) {
                 $row = $data->fetch_assoc();
                 if (password_verify($_POST['password'], $row['password'])) {
+                    if ($row['active'] == 0) {
+                        header('Location: AdminAuth.php?error=لقد تم رفض تسجيلك');
+                        die();
+                    } elseif ($row['active'] == 2) {
+                        header('Location: AdminAuth.php?error=تم التسجيل بإنتظار قبول مدير النظام');
+                        die();
+                    }
+
                     $_SESSION['guide']['guide_id'] = $row['guide_id'];
                     $_SESSION['guide']['name'] = $row['name'];
                     $_SESSION['guide']['image'] = $row['image'];
@@ -28,6 +38,7 @@ if (isset($_POST['type'])) {
                 } else {
                     header('Location: AdminAuth.php?error=The Password Is Wrong');
                 }
+                die();
             } else {
                 header('Location: AdminAuth.php?error=The Email Is Invalid');
             }
@@ -36,6 +47,8 @@ if (isset($_POST['type'])) {
     } else {
         header('Location: AdminAuth.php');
     }
+    die();
+
 }
 ?>
 <!DOCTYPE html>
