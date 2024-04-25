@@ -30,12 +30,12 @@ $rowlandmark = $selectlandmarksResult->fetch_assoc();
                 <span></span><span></span><span></span></button>
             <ul class="d-flex items-center link-list normalMenu">
                 <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="/"> الرئيسية </a></li>
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="AboutUs.html"> من نحن </a></li>
+                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="AboutUs.php"> من نحن </a></li>
                 <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="TouristView.php"> المعالم
                         السياحية </a></li>
                 <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="ViewTours.php"> الجولات
                         السياحية </a></li>
-                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="cart.html"> جدول الرحلات </a>
+                <li class="nav-items pr-12"><a class="fw-700 nav-link  relative" href="cart.php"> جدول الرحلات </a>
                 </li>
             </ul>
             <button class="btn btn-popup nav-button round-6" type="button" aria-label="Auth page"><a href="Auth.php"
@@ -52,7 +52,7 @@ $rowlandmark = $selectlandmarksResult->fetch_assoc();
             <ul class="d-flex items-center justify-center relative">
                 <li class="linkPage"> تفاصيل المعالم السياحية</li>
                 <li class="separator"></li>
-                <li class="defPage "><a href="/" class=""> الصفحة الرئيسية </a></li>
+                <li class="defPage "><a href="index.php" class=""> الصفحة الرئيسية </a></li>
             </ul>
         </div>
     </section>
@@ -76,10 +76,6 @@ $rowlandmark = $selectlandmarksResult->fetch_assoc();
                         <div class="d-flex items-center mb-6">
                             <p class="title fs-18 fw-500">المدينة:</p>
                             <p class="des fw-600 fs-20"><?php echo $rowlandmark['city_name'] ?></</p> </div>
-                        <div class="d-flex items-center justify-center mx-auto mt-14">
-                            <button class="btn btn-popup  round-6" type="button" aria-label="احجز الان">
-                                <a href="/" class="py-6 px-12 fs-18 fw-700"> احجز الان</a></button>
-                        </div>
                     </div>
                 </div> <!-- left-side -->
                 <div class="col-6-lg col-12-md col-12-sm row-left">

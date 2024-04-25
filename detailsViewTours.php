@@ -40,7 +40,7 @@ include "layout/inc/header.php";
             <ul class="d-flex items-center justify-center relative">
                 <li class="linkPage"> تفاصيل الجولات السياحية</li>
                 <li class="separator"></li>
-                <li class="defPage "><a href="/" class=""> الصفحة الرئيسية </a></li>
+                <li class="defPage "><a href="index.php" class=""> الصفحة الرئيسية </a></li>
             </ul>
         </div>
     </section>
@@ -62,8 +62,8 @@ include "layout/inc/header.php";
                                 <?php echo $tour['price'] ?>
                                 <span class="fs-16 fw-500">ر.س</span></p></div>
                         <div class="mt-14">
-                            <button class="btn btn-popup  round-6" type="button" aria-label="احجز الان"><a
-                                        href="cart.html" class="py-6 px-12 fs-18 fw-700"> احجز الان</a></button>
+                            <button class="btn btn-popup  round-6" type="button" aria-label="إضافة لجدول الرحلات"><a
+                                        href="addToCart.php?id=<?php echo $tour['tour_id'] ?>" class="py-6 px-12 fs-18 fw-700"> إضافة لجدول الرحلات</a></button>
                         </div>
                     </div>
                 </div> <!-- left-side -->

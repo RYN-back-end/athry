@@ -61,7 +61,7 @@ if (!function_exists('checkGuideLogin')) {
         session_start();
         if (!isset($_SESSION['guide']['loggedin'])) {
             if (!str_contains($_SERVER['REQUEST_URI'], 'AdminAuth.php')) {
-                header('Location: AdminAuth.php');
+                header('Location: ../AdminAuth.php');
             }
         } elseif (str_contains($_SERVER['REQUEST_URI'], 'AdminAuth.php')) {
             header('Location: index.php');
@@ -72,7 +72,7 @@ if (!function_exists('checkGuideLogin')) {
             $checkMyUserResult = runQuery($checkMyUserSql);
             if ($checkMyUserResult->num_rows <= 0 && $_SESSION['guide']['loggedin'] == true) {
                 $_SESSION['guide'] = [];
-                header('Location: AdminAuth.php');
+                header('Location: ../AdminAuth.php');
             }
         }
     }

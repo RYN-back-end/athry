@@ -1,4 +1,8 @@
 <?php
+require('system/helper.php');
+
+$selectToursSql = 'SELECT * FROM `tours` order by `tour_id` DESC LIMIT 8';
+$selectToursResult = runQuery($selectToursSql);
 
 ?>
 
@@ -92,149 +96,48 @@ include "layout/inc/header.php";
         <div class="mainHeading text-center"><h2 class="fs-36 fw-700 d-inline-block relative">الاكثر طلبا</h2></div>
         <div class="container">
             <div class="row gap-row-1 gap-x-12">
-                <div class="col-4-lg col-6-md col-12-sm"><a href="detailsTouristView.php">
-                        <div class="card round-8">
-                            <div class="top"><img src="./assets/images/1-DOxE-mvv_zsRNb.webp" alt="img for product"
-                                                  class="img-cover" width="1456" height="832" loading="lazy"
-                                                  decoding="async"></div>
-                            <div class="body">
-                                <div class="d-flex items-center justify-between pb-4"><h3 class="fw-700 fs-28">معبد
-                                        ابوسبل</h3>
-                                    <p class="place d-flex items-center fw-700 ">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" class="ml-1"
-                                             data-icon="location">
-                                            <symbol id="ai:local:location">
-                                                <path fill="currentColor"
-                                                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7M7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9"/>
-                                                <circle cx="12" cy="9" r="2.5" fill="currentColor"/>
-                                            </symbol>
-                                            <use xlink:href="#ai:local:location"></use>
-                                        </svg>
-                                        الاقصر
-                                    </p>
-                                </div>
-                                <p class="des fs-18 pb-4 fw-500 line-normal"> يعد معبد ابوسبل احد الاثار المصرية المميزة
-                                    التي تتميز بجمالها ودقة تصميمها </p>
-                                <button class="btn btn-popup booking-btn mb-2 py-5 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
-                                        type="button" aria-label="احجز الان"> عرض التفاصيل
-                                </button>
-                            </div> <!-- end --> </div>
-                    </a></div>
-                <div class="col-4-lg col-6-md col-12-sm"><a href="detailsTouristView.php">
-                        <div class="card round-8">
-                            <div class="top"><img src="./assets/images/1-DOxE-mvv_zsRNb.webp" alt="img for product"
-                                                  class="img-cover" width="1456" height="832" loading="lazy"
-                                                  decoding="async"></div>
-                            <div class="body">
-                                <div class="d-flex items-center justify-between pb-4"><h3 class="fw-700 fs-28">
-                                        الاهرامات المصرية</h3>
-                                    <p class="place d-flex items-center fw-700 ">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" class="ml-1"
-                                             data-icon="location">
-                                            <use xlink:href="#ai:local:location"></use>
-                                        </svg>
-                                        الجيزة
-                                    </p>
-                                </div>
-                                <p class="des fs-18 pb-4 fw-500 line-normal"> يعد الاهرامات المصرية احد الاثار المصرية
-                                    المميزة التي تتميز بجمالها ودقة تصميمها </p>
-                                <button class="btn btn-popup booking-btn mb-2 py-5 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
-                                        type="button" aria-label="احجز الان"> عرض التفاصيل
-                                </button>
-                            </div> <!-- end --> </div>
-                    </a></div>
-                <div class="col-4-lg col-6-md col-12-sm"><a href="detailsTouristView.php">
-                        <div class="card round-8">
-                            <div class="top"><img src="./assets/images/1-DOxE-mvv_zsRNb.webp" alt="img for product"
-                                                  class="img-cover" width="1456" height="832" loading="lazy"
-                                                  decoding="async"></div>
-                            <div class="body">
-                                <div class="d-flex items-center justify-between pb-4"><h3 class="fw-700 fs-28"> برج بيزا
-                                        المائل </h3>
-                                    <p class="place d-flex items-center fw-700 ">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" class="ml-1"
-                                             data-icon="location">
-                                            <use xlink:href="#ai:local:location"></use>
-                                        </svg>
-                                        ايطاليا ميلان
-                                    </p>
-                                </div>
-                                <p class="des fs-18 pb-4 fw-500 line-normal"> يعد برج بيزا المائل احد الاثار المصرية
-                                    المميزة التي تتميز بجمالها ودقة تصميمها </p>
-                                <button class="btn btn-popup booking-btn mb-2 py-5 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
-                                        type="button" aria-label="احجز الان"> عرض التفاصيل
-                                </button>
-                            </div> <!-- end --> </div>
-                    </a></div>
-                <div class="col-4-lg col-6-md col-12-sm"><a href="detailsTouristView.php">
-                        <div class="card round-8">
-                            <div class="top"><img src="./assets/images/1-DOxE-mvv_zsRNb.webp" alt="img for product"
-                                                  class="img-cover" width="1456" height="832" loading="lazy"
-                                                  decoding="async"></div>
-                            <div class="body">
-                                <div class="d-flex items-center justify-between pb-4"><h3 class="fw-700 fs-28">معبد
-                                        ابوسبل</h3>
-                                    <p class="place d-flex items-center fw-700 ">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" class="ml-1"
-                                             data-icon="location">
-                                            <use xlink:href="#ai:local:location"></use>
-                                        </svg>
-                                        الاقصر
-                                    </p>
-                                </div>
-                                <p class="des fs-18 pb-4 fw-500 line-normal"> يعد معبد ابوسبل احد الاثار المصرية المميزة
-                                    التي تتميز بجمالها ودقة تصميمها </p>
-                                <button class="btn btn-popup booking-btn mb-2 py-5 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
-                                        type="button" aria-label="احجز الان"> عرض التفاصيل
-                                </button>
-                            </div> <!-- end --> </div>
-                    </a></div>
-                <div class="col-4-lg col-6-md col-12-sm"><a href="detailsTouristView.php">
-                        <div class="card round-8">
-                            <div class="top"><img src="./assets/images/1-DOxE-mvv_zsRNb.webp" alt="img for product"
-                                                  class="img-cover" width="1456" height="832" loading="lazy"
-                                                  decoding="async"></div>
-                            <div class="body">
-                                <div class="d-flex items-center justify-between pb-4"><h3 class="fw-700 fs-28">
-                                        الاهرامات المصرية</h3>
-                                    <p class="place d-flex items-center fw-700 ">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" class="ml-1"
-                                             data-icon="location">
-                                            <use xlink:href="#ai:local:location"></use>
-                                        </svg>
-                                        الجيزة
-                                    </p>
-                                </div>
-                                <p class="des fs-18 pb-4 fw-500 line-normal"> يعد الاهرامات المصرية احد الاثار المصرية
-                                    المميزة التي تتميز بجمالها ودقة تصميمها </p>
-                                <button class="btn btn-popup booking-btn mb-2 py-5 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
-                                        type="button" aria-label="احجز الان"> عرض التفاصيل
-                                </button>
-                            </div> <!-- end --> </div>
-                    </a></div>
-                <div class="col-4-lg col-6-md col-12-sm"><a href="detailsTouristView.php">
-                        <div class="card round-8">
-                            <div class="top"><img src="./assets/images/1-DOxE-mvv_zsRNb.webp" alt="img for product"
-                                                  class="img-cover" width="1456" height="832" loading="lazy"
-                                                  decoding="async"></div>
-                            <div class="body">
-                                <div class="d-flex items-center justify-between pb-4"><h3 class="fw-700 fs-28"> برج بيزا
-                                        المائل </h3>
-                                    <p class="place d-flex items-center fw-700 ">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" class="ml-1"
-                                             data-icon="location">
-                                            <use xlink:href="#ai:local:location"></use>
-                                        </svg>
-                                        ايطاليا ميلان
-                                    </p>
-                                </div>
-                                <p class="des fs-18 pb-4 fw-500 line-normal"> يعد برج بيزا المائل احد الاثار المصرية
-                                    المميزة التي تتميز بجمالها ودقة تصميمها </p>
-                                <button class="btn btn-popup booking-btn mb-2 py-5 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
-                                        type="button" aria-label="احجز الان"> عرض التفاصيل
-                                </button>
-                            </div> <!-- end --> </div>
-                    </a></div>
+                <?php if ($selectToursResult->num_rows > 0) {
+                    while ($row = $selectToursResult->fetch_assoc()) {
+                        ?>
+                        <div class="col-4-lg col-6-md col-12-sm">
+                            <a href="detailsViewTours.php?id=<?php echo $row['tour_id'] ?>">
+                                <div class="card round-8">
+                                    <div class="top"><img src="<?php echo $row['image'] ?>"
+                                                          style="height: 240px;object-fit: contain"
+                                                          alt="img for product"
+                                                          class="img-cover" width="1456" height="832" loading="lazy"
+                                                          decoding="async"></div>
+                                    <div class="body">
+                                        <div class="d-flex items-center justify-between pb-4"><h3
+                                                    class="fw-700 fs-28"><?php echo $row['name'] ?></h3>
+                                            <!--                                            <p class="place d-flex items-center fw-700 ">-->
+                                            <!--                                                <svg width="24" height="24" viewBox="0 0 24 24" class="ml-1"-->
+                                            <!--                                                     data-icon="location">-->
+                                            <!--                                                    <symbol id="ai:local:location">-->
+                                            <!--                                                        <path fill="currentColor"-->
+                                            <!--                                                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7M7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9"/>-->
+                                            <!--                                                        <circle cx="12" cy="9" r="2.5" fill="currentColor"/>-->
+                                            <!--                                                    </symbol>-->
+                                            <!--                                                    <use xlink:href="#ai:local:location"></use>-->
+                                            <!--                                                </svg>-->
+                                            <!--                                                الاقصر-->
+                                            <!--                                            </p>-->
+                                        </div>
+                                        <!--                                        <p class="des fs-18 pb-4 fw-500 line-normal">-->
+                                        <?php //echo $row['tour_id'] ?><!-- </p>-->
+                                        <p class="price des fs-18 pb-8 fw-500">
+                                            سعر الرحلة للفرد : <span><?php echo $row['price'] ?> ر.س </span></p>
+                                        <button class="btn btn-popup booking-btn mb-2 py-5 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
+                                                type="button" aria-label="احجز الان"> احجز الان
+                                        </button>
+                                    </div> <!-- end --> </div>
+                            </a>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+
             </div>
         </div>
     </section>

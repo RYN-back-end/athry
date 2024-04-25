@@ -1,6 +1,19 @@
 <?php
 require('../system/helper.php');
 checkAdminLogin();
+
+$selectCartSql = "SELECT *,SUM(price) AS total_price  FROM `cart` WHERE `status` = 'confirmed'";
+$selectCartResult = runQuery($selectCartSql);
+$cartItems = [];
+if ($selectCartResult->num_rows > 0) {
+    while ($row = $selectCartResult->fetch_assoc()) {
+        $client = runQuery("SELECT * FROM `clients` WHERE `client_id` ='{$row['client_id']}'")->fetch_assoc();
+        $row['client'] = $client;
+        $gide = runQuery("SELECT * FROM `guides` WHERE `guide_id` ='{$row['guide_id']}'")->fetch_assoc();
+        $row['guide'] = $gide;
+        $cartItems[] = $row;
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -70,16 +83,39 @@ include 'layout/inc/header.php';
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>اسم العميل</th>
-                                        <th>اسم المرشد</th>
-                                        <th>الجولة</th>
-                                        <th>التاريخ</th>
+                                        <td>اسم المرشد</td>
+                                        <td>اسم العميل</td>
+                                        <td>بداية الرحلة</td>
+                                        <td>نهاية الرحلة</td>
+                                        <td>عدد الافراد</td>
+                                        <td>التكلفة</td>
 
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <?php
+                                    if (isset($cartItems[0]['client'])) {
+                                        foreach ($cartItems as $cartItem) {
+                                            ?>
+                                            <tr>
+                                                <td> <?php echo $cartItem['id'] ?></td>
+                                                <td> <?php echo $cartItem['guide']['name'] ?? "" ?></td>
+                                                <td> <?php echo $cartItem['client']['name'] ?? "" ?></td>
+                                                <td><?php echo $cartItem['from_date'] ?></td>
+                                                <td><?php echo $cartItem['to_date'] ?></td>
+                                                <td> <?php echo $cartItem['person_no'] ?></td>
+                                                <td> <?php echo $cartItem['price'] ?> ر.س</td>
+                                            </tr>
 
-                                    </tbody>
+                                            <?php
+                                        }
+                                        ?>
+                                        <tr>
+                                            <td colspan="6">الإجمالى</td>
+                                            <td colspan="2"><?php echo $cartItem['total_price'] ?? 0 ?> ر.س</td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
                                 </table>
                             </div>
                         </div>

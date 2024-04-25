@@ -35,6 +35,11 @@
                     <i class="icon-location_city nav-icon"></i>
                     المدن
                 </a>
+            </li><li class="nav-item dropdown">
+                <a class="nav-link " href="contacts.php" >
+                    <i class="icon-message nav-icon"></i>
+                    تواصل معنا
+                </a>
             </li>
         </ul>
     </div>

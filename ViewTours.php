@@ -1,7 +1,7 @@
 <?php
 require('system/helper.php');
 
-$selectToursSql = 'SELECT * FROM `tours` order by `tour_id` DESC LIMIT 8';
+$selectToursSql = 'SELECT * FROM `tours` order by `tour_id` DESC';
 $selectToursResult = runQuery($selectToursSql);
 
 ?>
@@ -31,7 +31,7 @@ include "layout/inc/header.php";
             <ul class="d-flex items-center justify-center relative">
                 <li class="linkPage"> عرض الجولات السياحية</li>
                 <li class="separator"></li>
-                <li class="defPage "><a href="/" class=""> الصفحة الرئيسية </a></li>
+                <li class="defPage "><a href="index.php" class=""> الصفحة الرئيسية </a></li>
             </ul>
         </div>
     </section>

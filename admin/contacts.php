@@ -1,17 +1,18 @@
 <?php
 require('../system/helper.php');
-checkGuideLogin();
+checkAdminLogin();
+$selectContactsSql = 'SELECT * FROM `contacts` order by `id` DESC';
+$selectContactsResult = runQuery($selectContactsSql);
 
-$selectCartSql = "SELECT *,SUM(price) AS total_price  FROM `cart` WHERE `status` = 'confirmed' AND `guide_id`='{$_SESSION['guide']['guide_id']}'";
-$selectCartResult = runQuery($selectCartSql);
-$cartItems = [];
-if ($selectCartResult->num_rows > 0) {
-    while ($row = $selectCartResult->fetch_assoc()) {
-        $client = runQuery("SELECT * FROM `clients` WHERE `client_id` ='{$row['client_id']}'")->fetch_assoc();
-        $row['client'] = $client;
-        $cartItems[] = $row;
+if (isset($_GET['method']) || isset($_POST['method'])) {
+    if ($_GET['method'] == 'delete' && isset($_GET['id'])) {
+        $deleteSql = "DELETE FROM `contacts` WHERE `id` = {$_GET['id']}";
+        runQuery($deleteSql);
+        header('Location: contacts.php');
+        die();
     }
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,10 +24,10 @@ if ($selectCartResult->num_rows > 0) {
     <!-- Meta -->
     <meta name="description" content="Responsive Bootstrap4 Dashboard Template">
     <meta name="author" content="ParkerThemes">
-    <link rel="shortcut icon" href="../assets/images/logo-ZIv9wrFv_Z1PmHf8.webp"/>
+    <link rel="shortCut icon" href="../assets/images/logo-ZIv9wrFv_Z1PmHf8.webp"/>
 
     <!-- Title -->
-    <title>اثري | الحجوزات</title>
+    <title>اثري | رسائل تواصل معنا</title>
     <?php
     include 'layout/assets/css.php';
     ?>
@@ -37,9 +38,17 @@ if ($selectCartResult->num_rows > 0) {
 <?php
 include 'layout/inc/header.php';
 ?>
+
+
 <!-- Screen overlay start -->
 <div class="screen-overlay"></div>
 <!-- Screen overlay end -->
+
+
+<!-- *************
+    ************ Header section end *************
+************* -->
+
 
 <div class="container-fluid">
 
@@ -48,19 +57,22 @@ include 'layout/inc/header.php';
     include 'layout/inc/sidebar.php';
     ?>
 
+
+    <!-- *************
+        ************ Main container start *************
+    ************* -->
     <div class="main-container">
 
 
+        <!-- Page header start -->
         <div class="page-header">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">الرئيسية</li>
-                <li class="breadcrumb-item active">الحجوزات</li>
+                <li class="breadcrumb-item active">رسائل تواصل معنا</li>
             </ol>
 
             <ul class="app-actions">
-                <!--                <li>-->
-                <!--                    <button class="btn btn-info"><i class="icon-plus"></i></button>-->
-                <!--                </li>-->
+
 
             </ul>
         </div>
@@ -81,37 +93,36 @@ include 'layout/inc/header.php';
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <td>اسم العميل</td>
-                                        <td>بداية الرحلة</td>
-                                        <td>نهاية الرحلة</td>
-                                        <td>عدد الافراد</td>
-                                        <td>التكلفة</td>
+                                        <th>الاسم</th>
+                                        <th>البريد الإلكترونى</th>
+                                        <th>الموضوع</th>
+                                        <th>المحتوي</th>
+                                        <th>حذف</th>
 
                                     </tr>
                                     </thead>
-                                    <?php
-                                    if (isset($cartItems[0]['client'])) {
-                                        foreach ($cartItems as $cartItem) {
+                                    <tbody>
+                                    <?php if ($selectContactsResult->num_rows > 0) {
+                                        while ($row = $selectContactsResult->fetCh_assoc()) {
                                             ?>
                                             <tr>
-                                                <td> <?php echo $cartItem['id'] ?></td>
-                                                <td> <?php echo $cartItem['client']['name'] ?? "" ?></td>
-                                                <td><?php echo $cartItem['from_date'] ?></td>
-                                                <td><?php echo $cartItem['to_date'] ?></td>
-                                                <td> <?php echo $cartItem['person_no'] ?></td>
-                                                <td> <?php echo $cartItem['price'] ?> ر.س</td>
+                                                <td><?php echo $row['id'] ?></td>
+                                                <td><?php echo $row['name'] ?></td>
+                                                <td><?php echo $row['email'] ?></td>
+                                                <td><?php echo $row['subject'] ?></td>
+                                                <td><?php echo $row['text'] ?></td>
+                                                <td>
+                                                    <a href="?method=delete&id=<?php echo $row['id'] ?>"
+                                                       class="btn btn-danger">حذف</a>
+                                                </td>
                                             </tr>
 
                                             <?php
                                         }
-                                        ?>
-                                        <tr>
-                                            <td colspan="5">الإجمالى</td>
-                                            <td colspan="2"><?php echo $cartItem['total_price'] ?? 0 ?> ر.س</td>
-                                        </tr>
-                                        <?php
                                     }
                                     ?>
+
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -123,7 +134,7 @@ include 'layout/inc/header.php';
 
         </div>
         <!-- Content wrapper end -->
-
+        <!-- Modal -->
 
     </div>
     <!-- *************

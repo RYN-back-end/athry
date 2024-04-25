@@ -262,7 +262,7 @@ const HeaderData = [
   },
   {
     title: "من نحن",
-    path: "AboutUs.html"
+    path: "AboutUs.php"
   },
   {
     title: "المعالم السياحية",
@@ -274,7 +274,7 @@ const HeaderData = [
   },
   {
     title: " جدول الرحلات ",
-    path: "cart.html"
+    path: "cart.php"
   }
 ];
 const SwiperData = [
@@ -480,7 +480,7 @@ const $$AboutUs = createComponent(async ($$result, $$props, $$slots) => {
 }, "D:/project/version/2/Astro/Asre/src/pages/AboutUs.astro", void 0);
 
 const $$file$b = "D:/project/version/2/Astro/Asre/src/pages/AboutUs.astro";
-const $$url$b = "/AboutUs.html";
+const $$url$b = "/AboutUs.php";
 
 const AboutUs = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
@@ -613,7 +613,7 @@ const $$Cart = createComponent(async ($$result, $$props, $$slots) => {
 }, "D:/project/version/2/Astro/Asre/src/pages/cart.astro", void 0);
 
 const $$file$8 = "D:/project/version/2/Astro/Asre/src/pages/cart.astro";
-const $$url$8 = "/cart.html";
+const $$url$8 = "/cart.php";
 
 const cart = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
@@ -719,7 +719,7 @@ const $$PreviousBook = createComponent(async ($$result, $$props, $$slots) => {
 }, "D:/project/version/2/Astro/Asre/src/pages/PreviousBook.astro", void 0);
 
 const $$file$3 = "D:/project/version/2/Astro/Asre/src/pages/PreviousBook.astro";
-const $$url$3 = "/PreviousBook.html";
+const $$url$3 = "/PreviousBook.php";
 
 const PreviousBook = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
