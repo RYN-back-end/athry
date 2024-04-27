@@ -3,8 +3,10 @@ require('system/helper.php');
 checkLogin();
 
 
-$selectCartSql = "SELECT *,SUM(price) AS total_price  FROM `cart` WHERE `status` = 'new'AND `client_id`='{$_SESSION['user']['client_id']}'";
+$selectCartSql = "SELECT *  FROM `cart` WHERE `status` = 'new'AND `client_id`='{$_SESSION['user']['client_id']}'";
 $selectCartResult = runQuery($selectCartSql);
+$selectCartSumSql = "SELECT SUM(price) AS total_price  FROM `cart` WHERE `status` = 'new'AND `client_id`='{$_SESSION['user']['client_id']}'";
+$selectCartSumResult = runQuery($selectCartSumSql);
 $cartItems = [];
 if ($selectCartResult->num_rows > 0) {
     while ($row = $selectCartResult->fetch_assoc()) {
@@ -99,7 +101,7 @@ include "layout/inc/header.php";
                     ?>
                     <tr>
                         <td colspan="5">الإجمالى</td>
-                        <td colspan="2"><?php echo $cartItem['total_price'] ?? 0 ?> ر.س</td>
+                        <td colspan="2"><?php echo $selectCartSumResult->fetch_assoc()['total_price'] ?? 0 ?> ر.س</td>
                     </tr>
                     <?php
                 }
