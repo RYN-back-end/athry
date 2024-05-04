@@ -105,7 +105,7 @@ include 'layout/inc/header.php';
                                         <th>الاسم</th>
                                         <th>البريد الإلكتروني</th>
                                         <th>رقم الهاتف</th>
-                                        <th>الصورة</th>
+                                        <th>الملف</th>
                                         <th>الحالة</th>
                                         <th>حذف</th>
 
@@ -120,9 +120,7 @@ include 'layout/inc/header.php';
                                                 <td><?php echo $row['name'] ?></td>
                                                 <td><?php echo $row['mail'] ?></td>
                                                 <td><?php echo $row['phone'] ?></td>
-                                                <td><img src="../<?php echo $row['image'] ?>"
-                                                         style="width: 80px;height: 80px"
-                                                         onclick="window.open(this.src)"></td>
+                                                <td><a href="../<?php echo $row['pdf'] ?>" target="_blank"> <img src="assets/pdf.png"  style="width: 80px;height: 80px"></a></td>
                                                 <td>
                                                     <?php
                                                     if ($row['active'] == 2) {

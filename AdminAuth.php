@@ -6,9 +6,33 @@ if (isset($_POST['type'])) {
     if ($_POST['type'] == 'register') {
 
         if (isset($_POST['mail']) && isset($_POST['password'])) {
+
+            if (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $_POST['password'])) {
+                header("Location: AdminAuth.php?error=يجب أن تحتوى كلمة المرور على حروف وأرقام");
+                die();
+            }
+
+            $pdfPath = null;
+            if (isset($_FILES['pdf'])) {
+                $errors = array();
+                $file_name = (time() * 2) . '.pdf';
+                $file_size = $_FILES['pdf']['size'];
+                $file_tmp = $_FILES['pdf']['tmp_name'];
+                $file_type = $_FILES['pdf']['type'];
+                $pdfPath = "uploads/pdf/" . $file_name;
+                if ($file_size > 2097152) {
+                    header("Location: signIn.php?error=يجب ان يكون حجم الملف اقل من 2MB");
+                }
+                move_uploaded_file($file_tmp, $pdfPath);
+            }
             $sql = "SELECT * FROM `guides` WHERE `mail` =  '{$_POST['mail']}'";
+
+            $checkExistsResult = runQuery($sql);
+            if ($checkExistsResult->num_rows > 0) {
+                header("Location: AdminAuth.php?error=البريد الإلكترونى مستخدم من قبل");
+            }
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $insertSql = "INSERT INTO `guides`(`name`,`mail`,`phone`,`password`) VALUES ('{$_POST['name']}','{$_POST['mail']}','{$_POST['phone']}','$password')";
+            $insertSql = "INSERT INTO `guides`(`name`,`mail`,`phone`,`password`,`pdf`) VALUES ('{$_POST['name']}','{$_POST['mail']}','{$_POST['phone']}','$password','{$pdfPath}')";
             runQuery($insertSql);
             header('Location: AdminAuth.php?success=تم التسجيل بإنتظار قبول مدير النظام');
             die();
@@ -75,7 +99,7 @@ include "layout/inc/header.php";
         <section class="slideAuth relative mx-auto">
             <div class="d-flex items-start overflow-hidden" id="container">
                 <div class="signIn Form" style="display: none;">
-                    <form action="" method="post"><h1 class="text-center fs-r-30 fw-800 mb-8 line-relaxed">تسجيل
+                    <form action="" method="post" enctype="multipart/form-data"><h1 class="text-center fs-r-30 fw-800 mb-8 line-relaxed">تسجيل
                             الدخول</h1>
                         <input type="hidden" name="type" value="login">
 
@@ -97,7 +121,7 @@ include "layout/inc/header.php";
                             ليس لديك حساب؟ <span class="fw-800 signInBtn"> أنشئ حسابك</span></p></form>
                 </div>
                 <div class="signUp Form pt-14">
-                    <form action="" method="post"><h1 class="text-center fs-r-30 fw-800 mb-6 line-relaxed">أنشئ
+                    <form action="" method="post" enctype="multipart/form-data"><h1 class="text-center fs-r-30 fw-800 mb-6 line-relaxed">أنشئ
                             حسابك</h1>
                         <input type="hidden" name="type" value="register">
                         <div class="formGroup relative mb-7"><input type="text" name="name" id="userName"
@@ -116,6 +140,10 @@ include "layout/inc/header.php";
                         <div class="formGroup relative mb-7"><input type="password" name="password"
                                                                     id="password" class="round-4 pr-5" required>
                             <label for="userPassword" class="absolute top-50 right-5">كلمة المرور</label>
+                            <p class="error"></p></div>
+                        <div class="formGroup relative mb-7"><input type="file" name="pdf" accept="application/pdf"
+                                                                    id="pdf" class="round-4 pr-5" required>
+                            <label for="pdf" class="absolute top-50 right-5">فايل </label>
                             <p class="error"></p></div>
                         <button class="btn mt-5 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto"
                                 type="submit" aria-label="sign in">
