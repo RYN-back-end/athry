@@ -104,9 +104,11 @@ include "layout/inc/header.php";
                                 <?php echo $tour['price'] ?>
                                 <span class="fs-16 fw-500">ر.س</span></p></div>
                         <div class="mt-14">
-                        <button class="btn btn-popup  round-6 openModal" data-modal="myModal" type="button" aria-label="إضافة لجدول الرحلات"><a
-                                    class="py-6 px-12 fs-18 fw-700 openModal" data-modal="myModal"> إضافة لجدول الرحلات</a></button>
-                    </div>
+                            <button class="btn btn-popup  round-6 openModal" data-modal="myModal" type="button"
+                                    aria-label="إضافة لجدول الرحلات"><a
+                                        class="py-6 px-12 fs-18 fw-700 openModal" data-modal="myModal"> إضافة لجدول
+                                    الرحلات</a></button>
+                        </div>
                         <div id="myModal" class="modal" style="display: none">
 
                             <span class="close">&times;</span>
@@ -120,15 +122,19 @@ include "layout/inc/header.php";
                                     <div class="col-12-lg col-12-md col-12-sm">
                                         <div class="formGroup relative mb-7 d-flex">
                                             <label for="startHouer" class="">عدد الأشخاص</label> <input
-                                                    type="number" name="person_no" max="<?php echo $tour['person_no'] ?>" min="1" required style="width: 100%"
+                                                    type="number" name="person_no"
+                                                    max="<?php echo $tour['person_no'] ?>" min="1" required
+                                                    style="width: 100%"
                                                     id="startHouer"
                                                     class="round-4 pr-5 pl-5 undefined"
                                                     placeholder="عدد الأشخاص"></div>
                                     </div>
 
                                     <div class="d-flex items-center justify-center mx-auto pt-14">
-                                        <button class="btn btn-popup  round-6 openModal" data-modal="myModal" type="submit" aria-label="إضافة لجدول الرحلات"><a
-                                                    class="py-6 px-12 fs-18 fw-700 openModal" data-modal="myModal"> إضافة لجدول الرحلات</a></button>
+                                        <button class="btn btn-popup  round-6 openModal" data-modal="myModal"
+                                                type="submit" aria-label="إضافة لجدول الرحلات"><a
+                                                    class="py-6 px-12 fs-18 fw-700 openModal" data-modal="myModal">
+                                                إضافة لجدول الرحلات</a></button>
                                     </div>
                                 </form>
 
@@ -150,10 +156,28 @@ include "layout/inc/header.php";
                                     <div class="">
                                         <a href="detailsTouristView.php?id=<?php echo $row22['landmark_id'] ?>">
 
-                                            <img
-                                                    src="<?php echo $oneLAndMark['file'] ?>" alt="صورة المعلم"
-                                                    class="round-6 mb-5" width="1456" height="832" loading="lazy"
-                                                    decoding="async"> </a></div>
+                                            <?php
+                                            if ($oneLAndMark['type'] == 'image') {
+                                                ?>
+                                                <img src="<?php echo $oneLAndMark['file'] ?>" alt="صورة المعلم"
+                                                     class="round-6"
+                                                     width="1456"
+                                                     height="832" loading="lazy" decoding="async">
+                                                <?php
+                                            } elseif ($oneLAndMark['type'] == 'video') {
+                                                ?>
+                                                <video class="round-6" width="1456" height="832" controls>
+                                                    <source src="<?php echo $oneLAndMark['file'] ?>" type="video/mp4">
+                                                </video>
+                                                <?php
+                                            }
+                                            ?>
+
+
+                                        </a>
+
+
+                                    </div>
                                     <?php
                                 }
                             }

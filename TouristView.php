@@ -1,7 +1,7 @@
 <?php
 require('system/helper.php');
 
-$selectlandmarksSql = 'SELECT `landmarks`.`landmark_id`, `landmarks`.`landmark_name`, `landmarks`.`landmark_site`, `landmarks`.`file`, `landmarks`.`description`, `cities`.`city_name` FROM `landmarks` , `cities` WHERE `landmarks`.`city_id` = `cities`.`city_id`  order by `landmarks`.`landmark_id` DESC LIMIT 8';
+$selectlandmarksSql = 'SELECT `landmarks`.`landmark_id`, `landmarks`.`landmark_name`,`landmarks`.`type`, `landmarks`.`landmark_site`, `landmarks`.`file`, `landmarks`.`description`, `cities`.`city_name` FROM `landmarks` , `cities` WHERE `landmarks`.`city_id` = `cities`.`city_id`  order by `landmarks`.`landmark_id` DESC LIMIT 8';
 $selectlandmarksResult = runQuery($selectlandmarksSql);
 
 ?>
@@ -45,10 +45,6 @@ include "layout/inc/header.php";
             <!-- filter -->
             <div class="filter-container d-flex items-center justify-between md-max-gap-x-5">
                 <h2 class="fs-r-30 fw-700">المعالم السياحية</h2>
-                <div class="filter-input d-flex items-center md-max-gap-x-5">
-                    <input type="text" placeholder="ادخل المدينة" name="" class="pr-5 round-6">
-                    <input type="text" placeholder="ادخل اسم المَعلم" name="" class="pr-5 round-6 md-mr-4">
-                </div>
             </div>
 
 
@@ -60,8 +56,25 @@ include "layout/inc/header.php";
                             <a href="detailsTouristView.php?id=<?php echo $row['landmark_id'] ?>">
                                 <div class="card round-8">
                                     <div class="top">
-                                        <img src="<?php echo $row['file'] ?>" alt="img for product" class="img-cover"
-                                             style="height: 240px" loading="lazy" decoding="async"><a
+<!--                                        <img src="--><?php //echo $row['file'] ?><!--" alt="img for product" class="img-cover"-->
+<!--                                             style="height: 240px" loading="lazy" decoding="async">-->
+
+                                        <?php
+                                        if ($row['type'] == 'image') {
+                                            ?>
+                                            <img src="<?php echo $row['file'] ?>" alt="صورة المعلم" class="img-cover"
+                                                 width="1456"
+                                                 height="832" loading="lazy" decoding="async">
+                                            <?php
+                                        } elseif ($row['type'] == 'video') {
+                                            ?>
+                                            <video class="img-cover" width="1456" height="832" controls>
+                                                <source src="<?php echo $row['file'] ?>" type="video/mp4">
+                                            </video>
+                                            <?php
+                                        }
+                                        ?>
+                                        <a
                                                 href="detailsTouristView.php?id=<?php echo $row['landmark_id'] ?>">
                                     </div>
 

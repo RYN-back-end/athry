@@ -2,7 +2,17 @@
 require('system/helper.php');
 
 $selectToursSql = 'SELECT * FROM `tours` order by `tour_id` DESC';
+if (isset($_GET['from_date']) && isset($_GET['to_date']) && isset($_GET['person_no']) && isset($_GET['price'])) {
+    $from_date = $_GET['from_date'];
+    $to_date = $_GET['to_date'];
+
+    $selectToursSql = "SELECT *FROM tours WHERE (('$from_date' BETWEEN from_date AND to_date) OR
+    ('$to_date' BETWEEN from_date AND to_date) OR
+    (from_date BETWEEN '$from_date' AND '$to_date') OR
+    (to_date BETWEEN '$from_date' AND '$to_date'))AND `price` = '{$_GET['price']}' AND `person_no` >= '{$_GET['person_no']}'";
+}
 $selectToursResult = runQuery($selectToursSql);
+
 
 ?>
 
@@ -48,10 +58,12 @@ include "layout/inc/header.php";
                 <form action="" class="relative"><h4 class="text-center fs-r-30 fw-700 pb-10">احجز جولتك</h4>
                     <div class="date mb-12 d-flex items-center"><p class="fs-18 fw-700">التاريخ</p>
                         <div class="form-group relative d-flex items-center mr-8"><label for="dateFrom">من</label>
-                            <input type="text" name="dateFrom" placeholder=" تارخ بداية الرحلة " class="mr-3 pr-5"
+                            <input type="date" name="from_date" required placeholder=" تارخ بداية الرحلة "
+                                   class="mr-3 pr-5"
                                    id="dateFrom"></div>
                         <div class="form-group relative d-flex items-center mr-8"><label for="dateFrom">الي</label>
-                            <input type="text" name="dateTo" placeholder=" تارخ نهاية الرحلة " class="mr-3 pr-5"
+                            <input type="date" name="to_date" required placeholder=" تارخ نهاية الرحلة "
+                                   class="mr-3 pr-5"
                                    id="dateTo"></div>
                     </div>
                     <div class="userDetails mb-12 d-flex items-center">
@@ -62,7 +74,7 @@ include "layout/inc/header.php";
                                 <button class="btn absolute more" type="button" aria-label="more user">
                                     +
                                 </button>
-                                <input type="text" name="numberUser" placeholder=" عدد الافراد " class="mr-3"
+                                <input type="text" name="person_no" required placeholder=" عدد الافراد " class="mr-3"
                                        id="numberUser" value="1">
                                 <button class="btn absolute mins" type="button" aria-label="mins user">
                                     -
@@ -71,14 +83,11 @@ include "layout/inc/header.php";
                         </div> <!-- cost -->
                         <div class="form-group relative d-flex items-center mr-8"><label for="cost"
                                                                                          class="pl-5 fs-18 fw-700">
-                                التكلفة للفرد</label> <input type="text" name="cost" placeholder=" التكلفة للفرد "
-                                                             class="mr-3 pr-5" id="cost" value="180" disabled> <span
+                                التكلفة للفرد</label> <input type="number" required name="price"
+                                                             placeholder=" التكلفة للفرد "
+                                                             class="mr-3 pr-5" id="" value=""> <span
                                     class="pr-5">ر.س</span></div>
                     </div>
-                    <div class="form-group relative d-flex items-center mr-8 mb-12 city"><label for="city"
-                                                                                                class="fs-18 fw-700">
-                            المدينة</label> <input type="text" name="city" placeholder=" المدينة  " class="mr-3 pr-5"
-                                                   id="city"></div>
                     <div class="d-flex items-center justify-center mx-auto">
                         <button class="btn btn-popup search-btn py-5 px-14 round-6 fs-18 fw-700" type="submit"
                                 aria-label="searching">
