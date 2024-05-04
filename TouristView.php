@@ -53,31 +53,31 @@ include "layout/inc/header.php";
                     while ($row = $selectlandmarksResult->fetch_assoc()) {
                         ?>
                         <div class="col-4-lg col-6-md col-12-sm">
-                            <a href="detailsTouristView.php?id=<?php echo $row['landmark_id'] ?>">
+                            <a href="detailsTouristView.php?id=<?php echo $row['landmark_id'] ?>" style="max-height:250px;height: 250px;padding: 12px;width: 100%;">
                                 <div class="card round-8">
                                     <div class="top">
 <!--                                        <img src="--><?php //echo $row['file'] ?><!--" alt="img for product" class="img-cover"-->
 <!--                                             style="height: 240px" loading="lazy" decoding="async">-->
+<!---->
 
                                         <?php
                                         if ($row['type'] == 'image') {
                                             ?>
-                                            <img src="<?php echo $row['file'] ?>" alt="صورة المعلم" class="img-cover"
+                                            <img src="<?php echo $row['file'] ?>" alt="صورة المعلم" style="height: 250px" class="img-cover"
                                                  width="1456"
                                                  height="832" loading="lazy" decoding="async">
                                             <?php
                                         } elseif ($row['type'] == 'video') {
                                             ?>
-                                            <video class="img-cover" width="1456" height="832" controls>
+                                            <video class="img-cover" width="1456"  style="height: 250px" height="832" controls>
                                                 <source src="<?php echo $row['file'] ?>" type="video/mp4">
                                             </video>
                                             <?php
                                         }
                                         ?>
-                                        <a
-                                                href="detailsTouristView.php?id=<?php echo $row['landmark_id'] ?>">
                                     </div>
-
+                                    <a
+                                            href="detailsTouristView.php?id=<?php echo $row['landmark_id'] ?>">
                                     <div class="body">
                                         <div class="d-flex items-center justify-between pb-4">
                                             <h3 class="fw-700 fs-28"><?php echo $row['landmark_name'] ?></h3>

@@ -154,7 +154,7 @@ include "layout/inc/header.php";
                                     $oneLAndMark = runQuery("SELECT * FROM `landmarks` WHERE `landmark_id` = '{$row22['landmark_id']}'")->fetch_assoc();
                                     ?>
                                     <div class="">
-                                        <a href="detailsTouristView.php?id=<?php echo $row22['landmark_id'] ?>">
+                                        <a href="detailsTouristView.php?id=<?php echo $row22['landmark_id'] ?>" style="max-height: 400px;height: 400px;padding: 12px;width: 100%;">
 
                                             <?php
                                             if ($oneLAndMark['type'] == 'image') {

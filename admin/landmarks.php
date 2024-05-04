@@ -38,7 +38,8 @@ if (isset($_POST['type']) && isset($_POST['landmark_id']) && $_POST['type'] == '
 
     $filePath = "";
     $fileType = "";
-    if (isset($_FILES['file']) && $_FILES['file']) {
+//    die(isset($_FILES['file']));
+    if (isset($_FILES['file']) && $_FILES['file'] && $_FILES['file']['name']!=null) {
         $errors = array();
         $fileType = checkFileType($_FILES['file']['tmp_name']);
         $file_extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
@@ -298,7 +299,7 @@ include 'layout/inc/header.php';
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">الملف</label>
 
-                                                    <input name="file" type="file" accept="image/*, video/*"
+                                                    <input name="file" type="file" accept=""
                                                            class="form-control">
                                                 </div>
 

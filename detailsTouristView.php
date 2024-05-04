@@ -60,7 +60,7 @@ include "layout/inc/header.php";
                 </div> <!-- left-side -->
                 <div class="col-6-lg col-12-md col-12-sm row-left">
                     <div class="left-side">
-                        <div class="img-container round-6 relative">
+                        <div class="img-container round-6 relative" style="max-height: 700px;height: 600px;padding: 12px;width: 100%;">
                             <?php
                             if ($rowlandmark['type'] == 'image') {
                                 ?>
